@@ -1,0 +1,43 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+#define ARRAY_MAX 10
+
+void selection_sort(int *a, int n) {
+    int p;
+    int i;
+    int index;
+    int temp;
+    for (p = 0; p < n-1; p++){
+        index = p;
+        for (i = p + 1; i < n; i++){
+            if (a[i] < a[index]){
+                index = i;
+            }
+        }
+        temp = a[index];
+        a[index] = a[p];
+        a[p] = temp;
+    }
+}
+
+int main(void) {
+    int my_array[ARRAY_MAX];
+    clock_t start, end;
+    int i, count = 0;
+    
+    while (count < ARRAY_MAX && 1 == scanf("%d", &my_array[count])) {
+        count++;
+    }
+
+    start = clock();
+    selection_sort(my_array, count);
+    end = clock();
+    
+    for (i = 0; i < count; i++) {
+        printf("%d\n", my_array[i]);
+    }
+    fprintf(stderr, "%d %f\n", count, (end - start) / (double)CLOCKS_PER_SEC);
+    return EXIT_SUCCESS;
+}

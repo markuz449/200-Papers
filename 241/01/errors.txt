@@ -1,0 +1,67 @@
+1. Because the class name doesn't match the filename the program won't compile.
+Hi.java:1: error: class hi is public, should be declared in a file named hi.java
+public class hi {
+       ^
+1 error
+
+2. All what's changing is the output and that "hello" isn't capitalized.
+hello, world!
+
+3. A bunch of Syntax errors stop the program from running because now the print statement is expecting a variable called 'Hello' which doesn't exist and because the final quotation mark is there it doesn't get closed causing more errors.
+Hi.java:3: error: ')' expected
+System.out.println(Hello, world!");
+                               ^
+Hi.java:3: error: unclosed string literal
+System.out.println(Hello, world!");
+                                ^
+Hi.java:3: error: ';' expected
+System.out.println(Hello, world!");
+                                   ^
+Hi.java:5: error: reached end of file while parsing
+}
+ ^
+4 errors
+
+4. Removing the last quotation mark leaves the string open and causes a syntax error.
+Hi.java:3: error: unclosed string literal
+System.out.println("Hello, world!);
+                   ^
+Hi.java:3: error: ';' expected
+System.out.println("Hello, world!);
+                                   ^
+Hi.java:5: error: reached end of file while parsing
+}
+ ^
+3 errors
+
+5. The program can't run because the main method is missing and java requires the main method to start it's programs.
+Error: Main method not found in class Hi, please define the main method as:
+   public static void main(String[] args)
+or a JavaFX application class must extend javafx.application.Application
+
+6. A sysntax error because java doesn't recognise printline, it should be println.
+Hi.java:3: error: cannot find symbol
+System.out.printline("Hello, world!");
+          ^
+  symbol:   method printline(String)
+  location: variable out of type PrintStream
+1 error
+
+7. Removing the semicolon at the end causes a syntax error because java doesn't realise that the line of code has come to an end and to move on. 
+Hi.java:3: error: cannot find symbol
+System.out.printline("Hello, world!");
+          ^
+  symbol:   method printline(String)
+  location: variable out of type PrintStream
+1 error
+
+8. With the last brace gone java doesn't regocnise the end of the class.
+Hi.java:4: error: reached end of file while parsing
+    }
+     ^
+1 error
+
+
+
+
+

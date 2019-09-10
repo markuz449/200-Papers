@@ -1,0 +1,50 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+#define ARRAY_LEN 10000
+
+void *emalloc(size_t s) {
+    void *result = malloc(s);
+    if (NULL == result) {
+        fprintf(stderr, "Memory allocation failed!\n");
+        exit(EXIT_FAILURE);
+    }
+    return result;
+}
+
+void mergeSort (int **nums, int left, int right, int count){
+    int mid;
+    if (left < right){
+        mid = (left + right) / 2;
+        mergeSort(nums, left, mid, count);
+        mergeSort(nums, mid + 1, right, count);
+        merge(nums, left, mid + 1, right, count);
+    }
+}
+
+void merge (int **nums, int left, int mid, int right, int count){
+    int temp[count];
+    int i, j, h, k;
+    for (int h = 0; h < count; h++){
+        temp[h] = nums[h];
+    }
+    i = left;
+    j = left;
+    k = mid;
+
+    while (i < mid && k <= right){
+        if (temp[i] < temp[k]){
+            nums[j++] = temp[i++];
+        } else {
+            nums[j++] = temp[k++];
+        }
+    }
+    while (i < mid){
+        nums[j++] = temp[i++];
+    }
+    while (j <= right){
+        nums[j++] = temp[k++];
+    }
+}
+
+        

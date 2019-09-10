@@ -1,0 +1,11 @@
+package week03;
+
+public class Test{
+  
+  public static void main(String[] args) {
+      long test = -1564544545;
+      System.out.println(RecursiveApp.digits(test));
+      System.out.println(RecursiveApp.sumOfDigits(test));
+      
+  }
+}

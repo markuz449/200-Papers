@@ -1,0 +1,104 @@
+#include <stdlib.h>
+#include <stdio.h>
+#include "mylib.h"
+#include "graph.h"
+#include "queue.h"
+
+typedef enum { UNVISITED, VISITED_SELF, VISITED_DESCENDANTS } state_t;
+
+struct vertex{
+    int predecessor;
+    int distance;
+    state_t state;
+    int finish;
+};
+
+struct graphrec{
+    int size;
+    int **matrix;
+    struct vertex *vertices;
+};
+
+graph graph_new(int size){
+    int i, j;
+    graph g = emalloc(sizeof *g);
+    
+    g->size = size;
+    g->matrix = (int **)emalloc(sizeof(int *) * size);
+    g->vertices = emalloc(sizeof(struct vertex) * size);
+
+    for (i = 0; i < size; i++){ 
+        g->matrix[i] = (int *)emalloc(sizeof(int) * size);
+        for (j = 0; j < size; j++){
+            g->matrix[i][j] = 0;
+        }
+    }
+    return g;
+}
+
+void graph_print(graph g){
+    int i, j;
+    printf("adjacency list:\n");
+    for (i = 0; i < g->size; i++){
+        printf("%d | ", i);
+        for (j = 0; j < g->size; j++){
+            if ((g->matrix[i][j]) == 1){
+                printf("%d, ", j);
+            }
+        }
+        printf("\n");
+    }
+    printf("\n");
+    printf("vertex distance pred\n");
+    for (i = 0; i < g->size; i++){
+        printf("% 4d    % 4d % 4d\n",
+               i, g->vertices[i].distance, g->vertices[i].predecessor);
+    }
+}
+
+graph graph_add_bi_edge(graph g, int u, int v){
+    if (u < g->size || v < g->size){
+        g->matrix[u][v] = 1;
+        g->matrix[v][u] = 1;
+    }
+    return g;
+}
+
+graph graph_bfs(graph g, int source){
+    int i, u, v;
+    queue q = queue_new(g->size);
+    
+    for (i = 0; i < g->size; i++){
+        g->vertices[i].state = UNVISITED;
+        g->vertices[i].distance = -1;
+        g->vertices[i].predecessor = -1;
+        /*g->vertices[i].finish = 0;*/
+    }
+
+    g->vertices[source].state = VISITED_SELF;
+    g->vertices[source].distance = 0;
+    enqueue(q, source);
+    while (queue_size(q) != 0){
+        u = dequeue(q);
+        for (v = 0; v < g->size; v++){
+            if ((g->matrix[u][v] == 1) && (g->vertices[v].state == UNVISITED)){
+                g->vertices[v].state = VISITED_SELF;
+                g->vertices[v].distance = 1 + g->vertices[u].distance;
+                g->vertices[v].predecessor = u;
+                enqueue(q, v);
+            }
+        }
+        g->vertices[u].state = VISITED_DESCENDANTS;
+    }
+    return g;
+}
+
+void graph_free(graph g){
+    int i;
+    for (i = 0; i < g->size; i++){
+        free(g->matrix[i]);
+    }
+    free (g->matrix);
+    free (g->vertices);
+    free (g);
+}

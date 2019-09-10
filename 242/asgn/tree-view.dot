@@ -1,0 +1,16 @@
+digraph tree {
+node [shape = Mrecord, penwidth = 2];
+"hhbgfvfghfre"[label="{<f0>hhbgfvfghfre:1|{<f1>|<f2>}}"color=black];
+"fbfb"[label="{<f0>fbfb:1|{<f1>|<f2>}}"color=black];
+"bgbfvdeg"[label="{<f0>bgbfvdeg:1|{<f1>|<f2>}}"color=red];
+"fbfb":f1 -> "bgbfvdeg":f0;
+"gfr"[label="{<f0>gfr:1|{<f1>|<f2>}}"color=red];
+"fbfb":f2 -> "gfr":f0;
+"hhbgfvfghfre":f1 -> "fbfb":f0;
+"rferfbg"[label="{<f0>rferfbg:1|{<f1>|<f2>}}"color=black];
+"rf"[label="{<f0>rf:1|{<f1>|<f2>}}"color=red];
+"rferfbg":f1 -> "rf":f0;
+"rhhrvhvfe"[label="{<f0>rhhrvhvfe:1|{<f1>|<f2>}}"color=red];
+"rferfbg":f2 -> "rhhrvhvfe":f0;
+"hhbgfvfghfre":f2 -> "rferfbg":f0;
+}

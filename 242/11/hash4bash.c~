@@ -1,0 +1,12 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include "htablerec.h"
+
+int main(void) {
+    int capacity = 12;
+    htable my_table = htable_new(capacity);
+    
+    htable_free(my_table);
+    
+    return EXIT_SUCCESS;
+}

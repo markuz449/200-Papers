@@ -1,0 +1,20 @@
+#BlueJ class context
+comment0.params=
+comment0.target=Tower()
+comment0.text=\r\n\ Creates\ a\ new\ empty\ Tower.\r\n
+comment1.params=top\ rest
+comment1.target=Tower(char,\ Tower)
+comment1.text=\r\n\ \ External\ classes\ can\ only\ create\ empty\ towers\ and\ manipulate\r\n\ \ them\ using\ public\ methods,\ because\ this\ constructor\ is\r\n\ \ private.\r\n\ @param\ top\ the\ top\ block\ in\ this\ tower\r\n\ @param\ rest\ the\ rest\ of\ the\ tower\r\n
+comment2.params=
+comment2.target=boolean\ isEmpty()
+comment2.text=\r\n\ \ Returns\ true\ if\ this\ tower\ is\ empty,\ otherwise\ false.\ \ Empty\r\n\ \ towers\ are\ represented\ with\ the\ top\ block\ being\ a\ space\r\n\ \ character.\r\n\ @return\ whether\ the\ tower\ is\ empty\ or\ not.\r\n
+comment3.params=block
+comment3.target=Tower\ add(char)
+comment3.text=\r\n\ \ Creates\ a\ new\ tower\ by\ adding\ the\ given\ block\ to\ the\ top\ of\r\n\ \ this\ tower.\r\n\ @param\ block\ a\ block\ to\ add\ to\ the\ top\ of\ this\ tower.\r\n\ @return\ a\ new\ tower\ created\ by\ adding\ a\ block\ to\ the\ top\ of\r\n\ this\ tower.\r\n
+comment4.params=
+comment4.target=int\ height()
+comment4.text=\ Returns\ the\ height\ of\ the\ tower,\ the\ number\ of\ blocks\ in\ the\ tower.\r\n\r\n\ \ @return\ the\ height\ of\ the\ tower.\r\n
+comment5.params=c
+comment5.target=int\ count(char)
+comment5.text=\ Returns\ the\ number\ of\ blocks\ in\ the\ tower\ equal\ to\ the\ input.\r\n\r\n\ \ @param\ c\ a\ char\ value.\r\n\ \ @return\ returns\ the\ number\ of\ blocks.\r\n
+numComments=6

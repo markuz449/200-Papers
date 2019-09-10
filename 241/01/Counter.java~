@@ -1,0 +1,55 @@
+/** Counter.java
+ *  COSC241 Lab 01
+ *  Marcus Anderson 
+ */
+package week01;
+
+import java.util.Scanner;
+
+public class Counter {
+  
+  private static int lines = 1;
+  private static int words = 0;
+  private static String userString = ""; 
+
+    /** Main method which calls InputNums()
+     *  Prints out the number of lines and words
+     */
+  public static void main (String [] args){
+    inputNums();
+    System.out.println("Lines: " + lines);
+    System.out.println("Words: " + words);
+  }
+
+    /** inputNums() uses scanners to count the number of lines and words
+     */
+    public static void inputNums(){
+        String line;
+        Scanner userInput = new Scanner(System.in);
+        
+        while (userInput.hasNextLine()) { //Checks if there is a next line
+            line = userInput.nextLine();
+            Scanner checkLine = new Scanner(line);
+            while (checkLine.hasNext()){ //Checks if there is words in a particular line
+                checkLine.next();
+                words ++;
+            }
+            checkLine.close();
+            userString += line + "\n";
+        }
+        lines = getLineNumber(userString);
+        userInput.close();
+    }
+
+    /** getLineNumber counts the number of lines
+     *
+     *  @param userLine the line that the scanner is on
+     *  @return The amount of new lines that the userLine has
+     */
+  public static int getLineNumber(String userLine){
+    return userLine.split("[\n|\r]").length;
+    }
+
+}
+
+
